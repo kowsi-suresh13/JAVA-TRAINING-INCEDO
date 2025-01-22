@@ -1,0 +1,40 @@
+MOVIE TICKET BOOKING APP:
+---------------------------
+
+
+
+
+------------------------
+PROBLEM:
+------------------------
+
+---> The primary goal of the system is to view available seats and book seats. 
+---> So, I have to handle seat availability properly when multiple users interact with the system.
+
+
+
+------------------------
+SOLUTION:  
+------------------------
+
+
+1. I have to ensure there is only one instance of the seat availability manager to handle all the problems.
+
+--> I am gonna use Singleton pattern which ensures that a class has only one instance and provides a global point of access to that instance. 
+    It will also ensure that there is no duplicate instance has been created. 
+
+    a. Private Constructor: It will Prevents external classes from creating new instances.
+    b. Static Instance: A static field holds the single instance of the class.
+    c. Global Access Method: A public static method(getInstance)provides access to the single instance. 
+
+
+
+2. Secondly, I have to Notify users about seat availability changes, such as when a seat becomes available or when a booking is confirmed.
+
+--> I am gonna use Observer pattern which is useful when you need to notify multiple objects about changes in a subject. 
+    In our example, we want to notify users when a seat is booked or when it becomes available.
+
+    a. Subject: this object maintains a list of observers and notifies them of changes.(users)
+    b. Observers: It will holds objects that are interested in being notified when the state of the subject changes.(ineterested users)
+    c. Update Method: This is a method in the observer that is called when the subject's state changes.
+
