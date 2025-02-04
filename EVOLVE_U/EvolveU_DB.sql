@@ -13,13 +13,19 @@ WHERE TABLE_SCHEMA = 'evolveu';
 SELECT * FROM MAIN;
 CREATE TABLE MAIN(
     RoleId INT PRIMARY KEY,
+    UserId INT,
+    AdminId INT,
+    InstructorId INT,
     RoleName ENUM("Learner","Admin","Instructor"),
     Description TEXT,
     CreatedAt TIMESTAMP,
-    UpdatedAt TIMESTAMP
+    UpdatedAt TIMESTAMP,
+    FOREIGN KEY (UserId) REFERENCES Learners(Userid),
+    FOREIGN KEY (InstructorId) REFERENCES Instructor(InstructorId),
+    FOREIGN KEY (AdminID) REFERENCES Admin(AdminID)
 );
 
-
+DROP TABLE MAIN;
 -- ADMIN TABLE
 SELECT * FROM Admin;
 ALTER TABLE Admin ADD COLUMN Updated_at TIMESTAMP;
